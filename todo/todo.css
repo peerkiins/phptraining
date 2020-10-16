@@ -69,8 +69,10 @@ input {
 }
 
 #add {
+    background-color: white;
     cursor: pointer;
-    border: 1px solid rgba(165, 42, 42, 0.1);
+    border: 1px solid rgba(165, 42, 42, 0.2);
+    box-shadow: 4px 4px 4px #ededed;
     float: left;
     width: 75px;
     height: 25px;

@@ -1,9 +1,3 @@
-<?php
-
-    declare(strict_types=1);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,12 +16,26 @@
                 <span id="headertxt">todos</span>
             </div>
 
-            <form action="todolist.php" name="Item" method="get">
+            <?php
+                pre_r($_GET);
+                pre_r($todoItem);
+
+                $todoItem = $_GET;
+                echo $todoItem;
+                $todoList = array();
+
+                $todoList[] = $_GET;
+
+                array_push($todoList, $todoItem,);
+
+                
+                echo $todoList;
+            ?>
+
+
+            <form action="" method="get">
                 <div id="inputcontainer">
                     <input type="text" name="todoItem" id="todoItem" placeholder="What needs to be done?" />
-                    <button type="submit" name="add" id="add">
-                        <span>Add</span>
-                    </button>
                 </div>
 
                 <div class="itemcontainer">
@@ -58,3 +66,13 @@
 </body>
 
 </html>
+
+<?php
+
+function pre_r( $array ) {
+    echo '<pre>' ;
+    print_r($array);
+    echo '</pre>' ;
+}
+
+?>
