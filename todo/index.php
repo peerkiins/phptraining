@@ -16,67 +16,47 @@
                 <span id="headertxt">todos</span>
             </div>
 
-            <form action="addtodo.php" method="POST">
+            <form action="addtodolist.php" method="GET">
                 <input type="checkbox" id="select-all" name="select-all">
                 <div id="inputcontainer">
-                    <input type="text" name="todoItem" id="todoItem" placeholder="What needs to be done?" />
+                    <input type="text" name="todo-item" id="todo-item" placeholder="What needs to be done?" />
                 </div>
             </form>
 
-                <?php
-                if(isset($_COOKIE['todoItems']))
-                {
-                    $todoList = json_decode($_COOKIE["todoItems"]);
-                    foreach($todoList as $key => $value)
-                    {
-                            $GLOBALS['number'] = $key + 1;
-                            $status_completed = false;   
-                ?>
-                    <div id="itemcontainer">
-                        <form method="GET">
-                            <input type="checkbox" id="Item" name="tdCompleted<?=$key?>">
-                            <label id="itemlabel" for="tdCompleted<?=$key?>"> <?=$value?> </label>
-                            <input type="submit" value="check">
-                        </form>
-                    </div>
-                <?php
-                    }
-                    if(isset($_GET["tdCompleted".$key]))
-                    {
-                        $status_completed = true;
-                    }
-
-                    if($status_completed)
-                    {
-                        print_r($value);
-                    }
-                    
-                    var_dump($_GET["tdCompleted"], $status_completed);
-                }
-                ?>
             <?php
-            if(!empty($todoList))
+            if(isset($_COOKIE['todo-items']))
             {
-            ?>             
-                <div class="footernav">
-                    <span class="count">
-                        <span><?=($number)?></span>
-                        <span>items left</span>
-                    </span>
-                    <ul>
-                        <li>
-                            <a>All</a>
-                        </li>
-                        <li>
-                            <a>Active</a>
-                        </li>
-                        <li>
-                            <a>Completed</a>
-                        </li>
-                    </ul>
+                $todoList = json_decode($_COOKIE['todo-items'], true);
+                foreach($todoList as $todoItems => $todoItem)
+                { ?>
+
+                <div id="itemcontainer"> 
+                    <input type="checkbox" name="checkbox" <?php echo $todoItem['completed'] ? 'checked' : '' ?>>
+                    <label id="itemlabel" for="checkbox"> <?php echo $todoItems ?> </label>
                 </div>
+                    
             <?php
-            }?>
+                }
+            }
+            ?>
+                
+            <div class="footernav">
+                <span class="count">
+                    <span><?=($number)?></span>
+                    <span>items left</span>
+                </span>
+                <ul>
+                    <li>
+                        <a>All</a>
+                    </li>
+                    <li>
+                        <a>Active</a>
+                    </li>
+                    <li>
+                        <a>Completed</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

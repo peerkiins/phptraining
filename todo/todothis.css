@@ -46,7 +46,7 @@ form {
     border-color: #ededed;
 }
 
-#todoItem {
+#todo-item {
     float: left;
     font-size: 20px;
     border: none;
