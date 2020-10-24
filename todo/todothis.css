@@ -10,9 +10,9 @@ body {
 }
 
 .list-container {
-    width: 50%;
+    width: 550px;
     height: 750px;
-    margin-left: calc(50% - 25%);
+    margin-left: calc(50% - 550px / 2);
     margin-top: 50px;
 }
 
@@ -29,61 +29,47 @@ body {
     font-size: 100px;
 }
 
-form {
+#inputform {
     display: block;
     float: left;
     background-color: white;
     outline: 1px solid #e8e7e3;
     width: 100%;
-    height: 65px;
+    height: 58px;
     box-shadow: 4px 4px 4px #ededed;
 }
 
 #inputcontainer {
     outline: 1px solid #ededed;
     width: 100%;
-    height: 65px;
+    height: 58px;
     border-color: #ededed;
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 }
 
 #todo-item {
+    position: relative;
     float: left;
     font-size: 20px;
     border: none;
-    width: calc(100% - 64px);
+    width: calc(100% - 80px);
     height: 30px;
-    margin-top: calc(65px / 2 - 30px / 2);
+    margin-top: calc(58px / 2 - 30px / 2);
+    margin-left: 24px;
 }
 
-#todoItem:focus {
+#todo-item:focus {
     outline: none;
 }
 
 input {
     font-family: Helvetica, sans-serif;
+    font-style: normal
+}
+
+#inputcontainer #todo-item::placeholder {
     font-style: italic;
-    font-size: 20px;
-    box-shadow: inset 0 -2 1 0 rgba(0, 0, 0, 0.3);
-}
-
-#todoItem::placeholder {
-    opacity: 0.4;
-}
-
-#add {
-    background-color: white;
-    cursor: pointer;
-    border: 1px solid rgba(165, 42, 42, 0.2);
-    box-shadow: 4px 4px 4px #ededed;
-    float: left;
-    width: 75px;
-    height: 25px;
-    margin-left: 12px;
-    margin-top: calc(65px / 2 - 25px / 2);
-}
-
-#add:active {
-    border: 1px solid rgba(165, 42, 42, 0.3);
+    opacity: 0.3;
 }
 
 .itemcontainer {
@@ -94,7 +80,7 @@ input {
 [type=checkbox] {
     float: left;
     content: '';
-    margin-top: calc(65px / 2 - 20px / 2);
+    margin-top: calc(58px / 2 - 20px / 2);
     margin-left: 10px;
     margin-right: 20px;
     vertical-align: bottom;
@@ -106,10 +92,12 @@ input {
 
 #itemcontainer {
     outline: 1px solid #e6e6e6;
+    background-color: white;
     display: block;
     float: left;
     width: 100%;
-    height: 65px;
+    height: 58px;
+    box-shadow: 6px black;
 }
 
 #itemlabel {
@@ -118,14 +106,37 @@ input {
     font-family: Helvetica, sans-serif;
     font-style: normal;
     font-size: 20px;
-    box-shadow: inset 0 -2 1 0 rgba(0, 0, 0, 0.3);
-    padding-top: 22px;
+    padding-top: 17px;
+}
+
+#delete {
+    display: none;
+    float: right;
+    color: maroon;
+    margin-right: 20px;
+    margin-top: calc(58px / 2 - 18px / 2);
+    background-color: transparent;
+    border: none;
+    opacity: 0.3;
+}
+
+#itemcontainer:hover #delete {
+    display: block;
+}
+
+#delete:focus {
+    outline: none;
+}
+
+#delete:hover {
+    opacity: 0.8;
 }
 
 .footernav {
+    outline: 1px solid #e6e6e6;
+    background-color: white;
     display: block;
     float: left;
-    border: 1px solid #e6e6e6;
     width: 100%;
     height: 50px;
     color: #777;
@@ -146,6 +157,8 @@ ul {
     float: left;
     list-style-type: none;
     vertical-align: middle;
+    padding-left: 0;
+    margin-left: calc(550px / 2 - 76px - 193px / 2);
 }
 
 li {
@@ -163,4 +176,36 @@ li:hover {
 
 li:active {
     border: 1px solid rgba(165, 42, 42, 0.3);
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #777;
+}
+
+#delete-all {
+    float: right;
+    margin-right: 10px;
+    margin-top: 17px;
+}
+
+#blankbox1 {
+    display: block;
+    float: left;
+    background-color: white;
+    outline: 1px solid #e6e6e6;
+    height: 5px;
+    width: 540px;
+    margin-left: calc(550px / 2 - 540px / 2);
+}
+
+#blankbox2 {
+    display: block;
+    float: left;
+    background-color: white;
+    outline: 1px solid #e6e6e6;
+    height: 5px;
+    width: 530px;
+    margin-left: calc(550px / 2 - 530px / 2);
 }

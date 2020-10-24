@@ -9,20 +9,15 @@ if(isset($_GET['todo-item']))
         if(isset($_COOKIE['todo-items']))
         {
             $todoJson = $_COOKIE['todo-items'];
-            $jsonArray = json_decode($todoJson, true);            
+            $todoList = json_decode($todoJson, true);            
         }
         else 
         {
-            $jsonArray = [];
+            $todoList = [];
         }
 
-        $jsonArray[$todoItem] = ['completed' => false];
-        setcookie('todo-items', json_encode($jsonArray));
-        
-        // echo '<pre>';
-        // var_dump($jsonArray);
-        // echo '</pre>';
-
+        $todoList[$todoItem] = ['completed' => false];
+        setcookie('todo-items', json_encode($todoList));
         header("Location: /todo"); 
     }
 }

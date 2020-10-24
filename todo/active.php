@@ -35,20 +35,22 @@
                 $todoList = json_decode($_COOKIE['todo-items'], true);
                 $count = sizeof($todoList);
                 foreach($todoList as $todoItems => $todoItem)
-                { ?>
-
-                <div id="itemcontainer"> 
-                    <form action = "changestatus.php" method= "post">
-                        <input type = "hidden" name = "todo-item" value = "<?php echo $todoItems ?>">
-                        <input type="checkbox" name="checkbox" <?php echo $todoItem['completed'] ? 'checked' : '' ?>>
-                    </form>
-                    <label id="itemlabel" for="checkbox"> <?php echo $todoItems ?> </label>
-                    <form action = "deletetodolist.php" method= "post">
-                        <input type = "hidden" name = "todo-item" value = "<?php echo $todoItems ?>">
-                        <button id="delete">&#x2716</button>
-                    </form>
-                </div>      
+                {
+                    if($todoList[$todoItems]['completed'] == false)
+                    {?>
+                        <div id="itemcontainer"> 
+                            <form action = "changestatus.php" method= "post">
+                                <input type = "hidden" name = "todo-item" value = "<?php echo $todoItems ?>">
+                                <input type="checkbox" name="checkbox" <?php echo $todoItem['completed'] ? 'checked' : '' ?>>
+                            </form>
+                            <label id="itemlabel" for="checkbox"> <?php echo $todoItems ?> </label>
+                            <form action = "deletetodolist.php" method= "post">
+                                <input type = "hidden" name = "todo-item" value = "<?php echo $todoItems ?>">
+                                <button id="delete">&#x2716</button>
+                            </form>
+                        </div>      
             <?php
+                    }
                 }
             }
 
@@ -105,7 +107,7 @@
                         this.parentNode.submit();
                     };
                 })
-            </script> 
+            </script>  
         </div>
     </div>
 </body>
