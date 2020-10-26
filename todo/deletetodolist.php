@@ -1,14 +1,15 @@
 <?php
+session_start();
 
-if(isset($_COOKIE['todo-items']))
+if(isset($_SESSION['todo-items']))
 {
-    $todoList = json_decode($_COOKIE['todo-items'], true);
+    $todoList = json_decode($_SESSION['todo-items'], true);
 
     $tobedeleted = $_POST['todo-item'];
 
     unset($todoList[$tobedeleted]);
 
-    setcookie('todo-items', json_encode($todoList));
+    $_SESSION['todo-items'] = json_encode($todoList);
     header("Location: /todo"); 
 }
 
